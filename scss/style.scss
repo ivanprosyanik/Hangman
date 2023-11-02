@@ -1,0 +1,166 @@
+@import 'reset';
+@import 'fonts';
+@import 'vars';
+@import 'settings';
+@import 'mixins';
+
+
+
+
+.output {
+  margin-bottom: 30px;
+  font-size: size(30, 20);
+  text-align: center;
+
+  &__image {
+    width: 400px;
+    height: 400px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: -15px;
+    margin-bottom: 10px;
+
+    @include r(420) {
+      width: 100%;
+    }
+  }
+
+  &__word,
+  &__theme {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    letter-spacing: 0.5rem;
+
+    span {
+      display: inline-block;
+      font-weight: 500;
+      letter-spacing: .3rem;
+    }
+
+    p {
+      letter-spacing: normal;
+    }
+  }
+
+  &__theme {
+    margin-bottom: 10px;
+  }
+}
+
+.buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 500px;
+  gap: size(10, 3);
+  margin: 0 auto;
+  flex-wrap: wrap;
+  background-color: #fff;
+  padding: size(10, 5);
+  border-radius: 5px;
+  box-shadow: 10px 5px 20px 0px;
+}
+
+.btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  padding: 0 15px;
+  background-color: #000;
+  color: #fff;
+  transition: opacity .3s ease-in-out;
+  border-radius: 5px;
+
+  &:hover {
+    cursor: pointer;
+  }
+
+  &:disabled {
+    opacity: .7;
+  }
+}
+
+.attemp-1,
+.attemp-2,
+.attemp-3,
+.attemp-4,
+.attemp-5,
+.attemp-6 {
+  stroke-dasharray: 0 200;
+  /* Начальное значение - ничего не видно */
+  stroke-dashoffset: 0;
+  opacity: 0;
+  transition: stroke-dasharray 1s ease-in-out, stroke-dashoffset 1s ease-in-out, opacity 1s ease-in-out;
+}
+
+.attemp-1.active,
+.attemp-2.active,
+.attemp-3.active,
+.attemp-4.active,
+.attemp-5.active,
+.attemp-6.active {
+  stroke-dasharray: 200 0;
+  /* Финальное значение - линия от точки А до точки Б */
+  stroke-dashoffset: -200;
+  /* Начальное значение stroke-dashoffset для плавного появления */
+  opacity: 1;
+}
+
+.modal {
+  opacity: 0;
+  transform: translate(-200%, -200%);
+  transition: transform .3s ease-in-out;
+
+  &.active {
+    position: absolute;
+    z-index: 999;
+    top: 20%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transition: transform .3s ease-in-out, opacity .3s ease-in-out;
+    width: 350px;
+    height: 200px;
+    background-color: #fff;
+    opacity: 1;
+
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    flex-direction: column;
+    box-shadow: 3px 3px 20px 0px;
+    padding: 10px;
+  }
+
+  &.active .lock {
+    background-color: rgba(0, 0, 0, .5);
+  }
+
+  &__title {
+    margin-bottom: 100px;
+  }
+
+  &__list {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__btn {
+    border: 1px solid #000;
+    padding: 10px 20px;
+    transition: opacity .3s ease-in-out, color .3s ease-in-out, border-radius .3s ease-in-out;
+    white-space: nowrap;
+  }
+
+  &__btn:hover {
+    opacity: .5;
+    color: rgb(216, 8, 8);
+    border-radius: 5px;
+  }
+}

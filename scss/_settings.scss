@@ -1,0 +1,46 @@
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  border: 0;
+  padding: 0;
+  white-space: nowrap;
+  clip-path: inset(100%);
+  clip: rect(0 0 0 0);
+  overflow: hidden;
+}
+
+.body {
+  background-color: #b1b1b1;
+  transition: background-color .3s ease-in-out;
+  font-family: 'Montserrat', sans-serif;
+  min-height: 100vh;
+  overflow: hidden;
+}
+
+.lock {
+  overflow: hidden;
+  position: relative;
+  background-color: transparent;
+  transition: background-color .3s ease-in-out;
+
+  &::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: 10;
+    background-color: rgba(0, 0, 0, .5);
+    
+  }
+}
+
+.container {
+  max-width: 920px;
+  margin: 0 auto;
+  padding: 0 10px;
+}
+
+.wrapper {
+  position: relative;
+}

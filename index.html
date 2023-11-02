@@ -4,11 +4,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="css/style.min.css">
   <title>Hangman</title>
 </head>
 
-<body id="body">
+<body class="body" id="body">
   <div class="wrapper">
     <div class="container">
       <div class="output__image">
@@ -121,20 +121,20 @@
         <button class="btn" id="btn" value="Я" type="button">Я</button>
       </div>
       <div class="modal">
-        <h2 class="modal__titl">You lose :(</h2>
+        <h2 class="modal__title">Вы проиграли :(</h2>
         <ul class="modal__list">
           <li class="modal__item">
-            <button class="modal__btn" id="newGame">New game</button>
+            <button class="modal__btn" id="newGame" type="button">Новая игра</button>
           </li>
           <li class="modal__item">
-            <button class="modal__btn" id="closePage">Close this game</button>
+            <button class="modal__btn" id="closePage" type="button">Закрыть игру</button>
           </li>
         </ul>
       </div>
     </div>
   </div>
 
-  <script src="main.js"></script>
+  <script src="js/main.js"></script>
 </body>
 
 </html>
