@@ -137,6 +137,49 @@
     padding: 10px;
   }
 
+  &.modal-win {
+    .modal__title {
+      font-size: 20px;
+    }
+
+    &::before,
+    &::after {
+      content: '';
+      background-repeat: no-repeat;
+      background-size: contain;
+      background-position: center;
+      position: absolute;
+      left: -200px;
+      top: 0;
+      width: 200px;
+      height: 100%;
+      z-index: -1;
+    }
+
+    &::before {
+      background-image: url(../images/fire.gif);
+      scale: 2;
+
+      @include r($phone) {
+        left: -100px;
+        scale: 1;
+      }
+    }
+
+    &::after {
+      left: unset;
+      right: size(-200, 0);
+      bottom: -200px;
+      scale: size(2, 1);
+      background-image: url(../images/fire-2.gif);
+
+      @include r($phone) {
+        width: 100px;
+        right: 0;
+      }
+    }
+  }
+
   &.active .lock {
     background-color: rgba(0, 0, 0, .5);
   }
@@ -154,13 +197,15 @@
   &__btn {
     border: 1px solid #000;
     padding: 10px 20px;
-    transition: opacity .3s ease-in-out, color .3s ease-in-out, border-radius .3s ease-in-out;
+    transition: opacity .3s ease-in-out, color .3s ease-in-out, border-radius .3s ease-in-out, border-color .3s ease-in-out;
     white-space: nowrap;
+    border-color: #000;
   }
 
   &__btn:hover {
     opacity: .5;
     color: rgb(216, 8, 8);
     border-radius: 5px;
+    border-color: rgb(216, 8, 8);
   }
 }

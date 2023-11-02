@@ -1,10 +1,11 @@
 let themes = {
-  Nature: ['Дерево', 'Озеро', 'Гора', 'Цветок', 'Река', 'Солнце', 'Песок', 'Птица', 'Звезда', 'Бабочка', 'Луна', 'Дождь', 'Снег', 'Трава', 'Ветер', 'Медведь', 'Океан', 'Поляна', 'Камень', 'Молния'],
+  Nature: ['Дерево', 'Озеро', 'Гора', 'Цветок', 'Река', 'Песок', 'Птица', 'Звезда', 'Бабочка', 'Луна', 'Трава', 'Ветер', 'Медведь', 'Океан', 'Поляна', 'Камень'],
   Science: ['Физика', 'Химия', 'Биология', 'Математика', 'Астрономия', 'Генетика', 'Роботика', 'Электроника', 'Гравитация', 'Экология', 'Инженерия', 'Гипотеза', 'Лаборатория', 'Микроскоп', 'Молекула', 'Эксперимент', 'Ученый', 'Исследование'],
   Sport: ['Сноуборд', 'Стадион', 'Судья', 'Мяч', 'Свисток', 'Тайм', 'Фол', 'Тренировка',],
-  KindOfSport: ['Футбол', 'Баскетбол', 'Теннис', 'Плавание', 'Бег', 'Велоспорт', 'Гимнастика', 'Бокс', 'Хоккей', 'Гольф', 'Скейтбординг',
-    'Волейбол', 'Альпинизм',],
-  Body: ['Голова', 'Сердце', 'Рука', 'Нога', 'Палец', 'Глаз', 'Ухо', 'Нос', 'Рот', 'Живот', 'Спина', 'Плечо', 'Грудь', 'Шея', 'Зуб', 'Кость', 'Кожа', 'Волосы', 'Мышца', 'Сустав']
+  KindOfSport: ['Футбол', 'Баскетбол', 'Теннис', 'Плавание', 'Бег', 'Велоспорт', 'Гимнастика', 'Бокс', 'Хоккей', 'Гольф', 'Скейтбординг', 'Волейбол', 'Альпинизм',],
+  Body: ['Голова', 'Сердце', 'Рука', 'Нога', 'Палец', 'Глаз', 'Ухо', 'Нос', 'Рот', 'Живот', 'Спина', 'Плечо', 'Грудь', 'Шея', 'Зуб', 'Кость', 'Кожа', 'Волосы', 'Мышца', 'Сустав'],
+  Weather: ['Дождь', 'Снег', 'Ураган', 'Торнадо', 'Цунами', 'Засуха', 'Молния', 'Ветер', 'Шторм', 'Туман', 'Гололед', 'Изморось', 'Мороз', 'Гололедица', '',],
+
 };
 
 let themesArray = Object.keys(themes);
@@ -17,8 +18,9 @@ const outputWord = document.getElementById('outputWord');
 const outputTheme = document.getElementById('outputTheme');
 const body = document.getElementById('body');
 const modal = document.querySelector('.modal');
-const btnNewGame = document.querySelector('#newGame');
-const closePage = document.querySelector('#closePage')
+const modalWin = document.querySelector('.modal-win');
+const btnNewGame = document.querySelectorAll('#newGame');
+const closePage = document.querySelectorAll('#closePage')
 const btns = document.querySelectorAll('#btn');
 const attemptsPaint = document.querySelectorAll('#attemp');
 const newGame = document.getElementById('newGame');
@@ -34,6 +36,8 @@ function translateTheme() {
     outputTheme.innerHTML = `<p>Ваша тема:</p> <span>Тело</span>`;
   } else if (randomTheme == 'KindOfSport') {
     outputTheme.innerHTML = `<p>Ваша тема:</p> <span>Спорт(Вид)</span>`;
+  } else if(randomTheme == 'Weather') {
+    outputTheme.innerHTML = `<p>Ваша тема:</p> <span>Погода</span>`;
   }
 }
 translateTheme()
@@ -45,13 +49,16 @@ btns.forEach(el => {
   })
 });
 
+btnNewGame.forEach(el => {
+  el.addEventListener('click', () => {
+    location.reload()
+  })
+})
 
-btnNewGame.addEventListener('click', () => {
-  location.reload()
-});
-
-closePage.addEventListener('click', () => {
-  window.close();
+closePage.forEach(el => {
+  el.addEventListener('click', () => {
+    window.close()
+  })
 })
 
 let underLine = '';
@@ -85,6 +92,12 @@ function btnClick(el) {
       modal.classList.add('active')
       body.classList.add('lock')
     }, 2000);
+  }
+  if (underLine == word.toUpperCase()) {
+    setTimeout(() => {
+      modalWin.classList.add('active')
+      body.classList.add('lock')
+    }, 1500);
   }
 }
 
